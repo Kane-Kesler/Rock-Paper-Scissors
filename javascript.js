@@ -3,15 +3,15 @@ function getComputerChoice() {
     const rand_num = Math.floor(Math.random() * num_of_options);
 
     if (rand_num === 0) {
-        return "rock"
+        return 'rock'
     }
 
     else if (rand_num === 1) {
-        return "paper"
+        return 'paper'
     }
 
     else {
-        return "scissors"
+        return 'scissors'
     }
 }
 
@@ -52,6 +52,7 @@ function game() {
             continue;
         }
         else if (game_result === 'Draw')  {
+            console.log(`player score, ${player_score} : computer score ${computer_score}`)
             continue;
         }
         else if (game_result === 'Win') {
