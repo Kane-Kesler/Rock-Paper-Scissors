@@ -46,7 +46,7 @@ function game() {
     let computerScore = 0;
     let gameResult;
     while (playerScore !== 5 && computerScore !== 5) {
-        gameResult = playRound()
+        gameResult = playRound();
         if (gameResult === 'Invalid') {
             console.log('Please enter rock, paper or scissors');
             continue;
@@ -56,14 +56,14 @@ function game() {
             continue;
         }
         else if (gameResult === 'Win') {
-            playerScore++
+            playerScore++;
         }
         else {
-            computerScore++
+            computerScore++;
         }
-        console.log(`player score, ${playerScore} : computer score ${computerScore}`)
+        console.log(`player score, ${playerScore} : computer score ${computerScore}`);
     }
-    playerScore === 5 ? console.log('You win') : console.log('You lose')
+    playerScore === 5 ? console.log('You win') : console.log('You lose');
 }
    
 game();
