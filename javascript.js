@@ -1,12 +1,12 @@
 function getComputerChoice() {
-    const num_of_options = 3
-    const rand_num = Math.floor(Math.random() * num_of_options);
+    const numOfOption = 3
+    const randNum = Math.floor(Math.random() * numOfOption);
 
-    if (rand_num === 0) {
+    if (randNum === 0) {
         return 'rock'
     }
 
-    else if (rand_num === 1) {
+    else if (randNum === 1) {
         return 'paper'
     }
 
@@ -16,54 +16,54 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let game_status = '';
+    let gameStatus = '';
     playerSelection = prompt('enter rock paper scissors').toLocaleLowerCase();
     computerSelection = getComputerChoice();    
     if (playerSelection === computerSelection) {
-        game_status = 'Draw';
+        gameStatus = 'Draw';
     }
 
     else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
              playerSelection === 'paper' && computerSelection === 'rock' ||
              playerSelection === 'scissors' && computerSelection === 'paper') {
-             game_status = 'Win';
+             gameStatus = 'Win';
     }
 
     else if (playerSelection === 'scissors' && computerSelection === 'rock' ||
              playerSelection === 'rock' && computerSelection === 'paper' ||
              playerSelection === 'paper' && computerSelection === 'scissors') {
-             game_status = 'Lose';
+             gameStatus = 'Lose';
     }
 
     else {
-        game_status = 'Invalid'; 
+        gameStatus = 'Invalid'; 
     }
-    return game_status
+    return gameStatus
   }
 
 function game() {
-    let player_score = 0;
-    let computer_score = 0;
-    let game_result;
-    while (player_score !== 5 && computer_score !== 5) {
-        game_result = playRound()
-        if (game_result === 'Invalid') {
+    let playerScore = 0;
+    let computerScore = 0;
+    let gameResult;
+    while (playerScore !== 5 && computerScore !== 5) {
+        gameResult = playRound()
+        if (gameResult === 'Invalid') {
             console.log('Please enter rock, paper or scissors');
             continue;
         }
-        else if (game_result === 'Draw')  {
-            console.log(`player score, ${player_score} : computer score ${computer_score}`)
+        else if (gameResult === 'Draw')  {
+            console.log(`player score, ${playerScore} : computer score ${computerScore}`)
             continue;
         }
-        else if (game_result === 'Win') {
-            player_score++
+        else if (gameResult === 'Win') {
+            playerScore++
         }
         else {
-            computer_score++
+            computerScore++
         }
-        console.log(`player score, ${player_score} : computer score ${computer_score}`)
+        console.log(`player score, ${playerScore} : computer score ${computerScore}`)
     }
-    player_score === 5 ? console.log('You win') : console.log('You lose')
+    playerScore === 5 ? console.log('You win') : console.log('You lose')
 }
    
 game();
