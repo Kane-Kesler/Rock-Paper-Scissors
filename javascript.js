@@ -16,31 +16,27 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    game_status = ''
-    playerSelection = prompt('enter rock paper scissors').toLocaleLowerCase()
-    
+    let game_status = '';
+    playerSelection = prompt('enter rock paper scissors').toLocaleLowerCase();
+    computerSelection = getComputerChoice();    
     if (playerSelection === computerSelection) {
-        game_status = 'Draw'
-        console.log('Draw')
+        game_status = 'Draw';
     }
 
     else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
              playerSelection === 'paper' && computerSelection === 'rock' ||
              playerSelection === 'scissors' && computerSelection === 'paper') {
-              game_status = 'Win'  
-        console.log(`You win!, ${playerSelection} beats ${computerSelection}`)
+             game_status = 'Win';
     }
 
     else if (playerSelection === 'scissors' && computerSelection === 'rock' ||
              playerSelection === 'rock' && computerSelection === 'paper' ||
              playerSelection === 'paper' && computerSelection === 'scissors') {
-                game_status = 'Lose'
-        console.log(`You lose!, ${computerSelection} beats ${playerSelection}`)
+             game_status = 'Lose';
     }
 
     else {
-        game_status = 'Invalid'
-        
+        game_status = 'Invalid'; 
     }
     return game_status
   }
@@ -49,14 +45,13 @@ function game() {
     let player_score = 0;
     let computer_score = 0;
     let game_result;
-    while (player_score + computer_score !== 5) {
+    while (player_score !== 5 && computer_score !== 5) {
         game_result = playRound()
         if (game_result === 'Invalid') {
-            console.log('Please enter rock, paper in scissors');
+            console.log('Please enter rock, paper or scissors');
             continue;
         }
         else if (game_result === 'Draw')  {
-            console.log('Draw');
             continue;
         }
         else if (game_result === 'Win') {
@@ -65,9 +60,9 @@ function game() {
         else {
             computer_score++
         }
+        console.log(`player score, ${player_score} : computer score ${computer_score}`)
     }
+    player_score === 5 ? console.log('You win') : console.log('You lose')
 }
    
-  const playerSelection = 'rock';
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+game();
