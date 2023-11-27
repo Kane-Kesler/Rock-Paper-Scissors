@@ -66,4 +66,3 @@ function game() {
     playerScore === 5 ? console.log('You win') : console.log('You lose');
 }
    
-game();
