@@ -17,7 +17,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let gameStatus = '';
-    playerSelection = prompt('enter rock paper scissors').toLocaleLowerCase();
+    // playerSelection = prompt('enter rock paper scissors').toLocaleLowerCase();
     computerSelection = getComputerChoice();    
     if (playerSelection === computerSelection) {
         gameStatus = 'Draw';
@@ -66,3 +66,23 @@ function game() {
     playerScore === 5 ? console.log('You win') : console.log('You lose');
 }
    
+const rpsContainer = document.querySelector('#container');
+
+rpsContainer.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case 'rock':
+            output = playRound('rock', getComputerChoice());
+            console.log(output);
+            break;
+        case 'paper':
+            output = playRound('rock', getComputerChoice());
+            console.log(output);
+            break;
+        case 'scissors':
+            output = playRound('rock', getComputerChoice());
+            console.log(output);
+            break;
+    }
+});
