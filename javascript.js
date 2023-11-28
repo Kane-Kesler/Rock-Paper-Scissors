@@ -65,24 +65,56 @@ function game() {
     }
     playerScore === 5 ? console.log('You win') : console.log('You lose');
 }
-   
+
+
 const rpsContainer = document.querySelector('#container');
+
+let playerScore = 0;
+let computerScore = 0;
+
+const divPlayer = document.createElement('div');
+const divComputer = document.createElement('div');
+const divAnnounceWinOrLose = document.createElement('div');
+rpsContainer.appendChild(divPlayer);
+rpsContainer.appendChild(divComputer);
+rpsContainer.appendChild(divAnnounceWinOrLose);
+divPlayer.textContent = `Player Score: ${playerScore}`;
+divComputer.textContent = `Computer Score: ${computerScore}`;
 
 rpsContainer.addEventListener('click', (event) => {
     let target = event.target;
-
     switch(target.id) {
         case 'rock':
             output = playRound('rock', getComputerChoice());
-            console.log(output);
             break;
         case 'paper':
-            output = playRound('rock', getComputerChoice());
-            console.log(output);
+            output = playRound('paper', getComputerChoice());
             break;
         case 'scissors':
-            output = playRound('rock', getComputerChoice());
-            console.log(output);
+            output = playRound('scissors', getComputerChoice());
             break;
     }
+    
+    switch(output) {
+        case 'Win':
+            playerScore++;
+            break;
+        case 'Lose':
+            computerScore++;
+        default:
+            break;
+    }
+
+    divPlayer.textContent = `Player Score: ${playerScore}`;
+    divComputer.textContent = `Computer Score: ${computerScore}`;
+
+    if (playerScore === 5) {
+        divAnnounceWinOrLose.textContent = 'You Win!'
+    } else if (computerScore === 5) {
+        divAnnounceWinOrLose.textContent = 'You Lose!'
+    } else if (playerScore === 6 || computerScore === 6) {
+        playerScore = 0;
+        computerScore = 0;
+    }
+
 });
